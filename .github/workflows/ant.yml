@@ -13,7 +13,5 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Grant execute permission
-      run: chmod +x ant
     - name: Build with Ant
       run: ./ant -noinput -buildfile build.xml
