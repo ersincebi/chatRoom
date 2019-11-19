@@ -24,10 +24,8 @@ public class login implements Initializable {
 
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
-        // new userInfo(username.getText(), getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
-        System.out.println(username.getText());
-        System.out.println(selectedRooms.getValue());
-        System.out.println(getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
+        userInfo userInfo = new userInfo();
+        userInfo.setUserInfo(username.getText(), getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
         chatPanel chatPanel = new chatPanel();
         chatPanel.openChatPanel(event);
 
@@ -40,11 +38,8 @@ public class login implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        rooms.addRoom("Room 1", 9000);
-        rooms.addRoom("Room 2", 8000);
-        ArrayList<rooms> list = getRooms();
+        rooms.setRoomByAvailablePort();
         populateComboBox();
-
     }
 
     /**

@@ -1,18 +1,18 @@
 package chatRoom.lib;
 
 public class userInfo {
-    public String username;
-    public int roomConnected;
+    public static String username;
+    public static int roomConnected;
 
     /**
      * the will be displayed on the chatpanel
-     * @param username
+     * @param userName
      *
      * the port number user connected
      * @param port
      */
-    public userInfo(String username, int port){
-        this.username = username;
+    public void setUserInfo(String userName, int port){
+        this.username = userName;
         this.roomConnected = port;
     }
 }
