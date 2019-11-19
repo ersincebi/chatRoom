@@ -1,6 +1,7 @@
 package chatRoom.controllers;
 
 import chatRoom.lib.rooms;
+import chatRoom.lib.userInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -21,11 +23,13 @@ public class login implements Initializable {
     private Button connect;
 
     @FXML
-    public void userLogin(ActionEvent event){
-        // new userInfo(username.getText())
+    public void userLogin(ActionEvent event) throws IOException {
+        // new userInfo(username.getText(), getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
         System.out.println(username.getText());
         System.out.println(selectedRooms.getValue());
         System.out.println(getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
+        chatPanel chatPanel = new chatPanel();
+        chatPanel.openChatPanel(event);
 
     }
 
@@ -73,4 +77,5 @@ public class login implements Initializable {
     public ArrayList<rooms> getRooms(){
         return rooms.roomsList;
     }
+
 }
