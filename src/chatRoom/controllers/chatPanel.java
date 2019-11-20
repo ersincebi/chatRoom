@@ -13,10 +13,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 
 
 public class chatPanel {
+    private static DataInputStream fromServer;
+    private static DataOutputStream toServer;
+
     @FXML
     private TextArea messageArea;
     @FXML
@@ -35,8 +41,22 @@ public class chatPanel {
     }
 
     @FXML
-    public void sendMessage(ActionEvent event){
+    public void sendMessage(ActionEvent event) throws Exception{
         System.out.println(userInfo.username);
         System.out.println(userInfo.roomConnected);
+        Socket s = new Socket("localhost", userInfo.roomConnected);
+        fromServer = new DataInputStream(s.getInputStream());
+        toServer = new DataOutputStream(s.getOutputStream());
+        String messageText = userInfo.username + " > " + sendArea.getText();
+        while (true) {
+            sendReceive(messageText);
+        }
+    }
+
+    private void sendReceive(String messageText) throws Exception {
+        toServer.writeBytes(messageText);
+        toServer.flush();
+        String receiveMessageText = fromServer.readLine();
+        messageArea.setText("\n" + receiveMessageText);
     }
 }
