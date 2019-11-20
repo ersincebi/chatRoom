@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server$HandleAClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server$HandleAClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatRoom/lib/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/lib/server.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +115,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.server">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -221,6 +224,7 @@
       <workItem from="1574142877875" duration="9052000" />
       <workItem from="1574158318532" duration="664000" />
       <workItem from="1574173366504" duration="1231000" />
+      <workItem from="1574229460827" duration="3311000" />
     </task>
     <servers />
   </component>

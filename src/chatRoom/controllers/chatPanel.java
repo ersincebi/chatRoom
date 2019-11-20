@@ -13,10 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+import java.net.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.Socket;
 
 
 public class chatPanel {
@@ -30,6 +30,13 @@ public class chatPanel {
     @FXML
     private Button send;
 
+    byte[] sendData = new byte[1024];
+    byte[] receiveData = new byte[1024];
+    DatagramSocket clientSocket;
+    InetAddress IPAddress;
+    DatagramPacket sendPacket;
+    DatagramPacket receivePacket;
+
     public void openChatPanel(ActionEvent event) throws IOException {
         ((Node)event.getSource()).getScene().getWindow().hide();
         Parent root = FXMLLoader.load(getClass().getResource("../views/chatPanel.fxml"));
@@ -42,21 +49,31 @@ public class chatPanel {
 
     @FXML
     public void sendMessage(ActionEvent event) throws Exception{
-        System.out.println(userInfo.username);
-        System.out.println(userInfo.roomConnected);
-        Socket s = new Socket("localhost", userInfo.roomConnected);
-        fromServer = new DataInputStream(s.getInputStream());
-        toServer = new DataOutputStream(s.getOutputStream());
+        clientSocket = new DatagramSocket();
+        IPAddress = InetAddress.getByName("localhost");
         String messageText = userInfo.username + " > " + sendArea.getText();
-        while (true) {
-            sendReceive(messageText);
-        }
+
+        sendData = messageText.getBytes();
+        sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, userInfo.roomConnected);
+
+        clientSocket.send(sendPacket);
+
+        receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+        clientSocket.receive(receivePacket);
+
+        String modifiedSentence  = new String(receivePacket.getData());
+
+        sendReceive(modifiedSentence);
+
     }
 
     private void sendReceive(String messageText) throws Exception {
-        toServer.writeBytes(messageText);
-        toServer.flush();
-        String receiveMessageText = fromServer.readLine();
-        messageArea.setText("\n" + receiveMessageText);
+        messageArea.setText("\n" + messageText);
+    }
+
+    @FXML
+    public void endSession(){
+        clientSocket.close();
     }
 }
