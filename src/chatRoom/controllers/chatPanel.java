@@ -1,9 +1,10 @@
 package chatRoom.controllers;
 
-import chatRoom.lib.userInfo;
+import chatRoom.models.loginInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,15 +15,11 @@ import javafx.stage.Stage;
 
 
 import java.net.*;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 
-public class chatPanel {
-    private static DataInputStream fromServer;
-    private static DataOutputStream toServer;
-
+public class chatPanel implements Initializable {
     @FXML
     private TextArea messageArea;
     @FXML
@@ -36,6 +33,21 @@ public class chatPanel {
     InetAddress IPAddress;
     DatagramPacket sendPacket;
     DatagramPacket receivePacket;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Thread thread = new Thread(()->{
+            while(true){
+                try {
+                    Thread.sleep(500);
+                    receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                    clientSocket.receive(receivePacket);
+                    sendReceive(new String(receivePacket.getData()));
+                } catch (Exception e) {}
+            }
+        });
+        thread.start();
+    }
 
     public void openChatPanel(ActionEvent event) throws IOException {
         ((Node)event.getSource()).getScene().getWindow().hide();
@@ -51,21 +63,10 @@ public class chatPanel {
     public void sendMessage(ActionEvent event) throws Exception{
         clientSocket = new DatagramSocket();
         IPAddress = InetAddress.getByName("localhost");
-        String messageText = userInfo.username + " > " + sendArea.getText();
-
+        String messageText = loginInfo.username + " > " + sendArea.getText();
         sendData = messageText.getBytes();
-        sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, userInfo.roomConnected);
-
+        sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, loginInfo.roomConnected);
         clientSocket.send(sendPacket);
-
-        receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
-        clientSocket.receive(receivePacket);
-
-        String modifiedSentence  = new String(receivePacket.getData());
-
-        sendReceive(modifiedSentence);
-
     }
 
     private void sendReceive(String messageText) throws Exception {

@@ -1,7 +1,8 @@
 package chatRoom.controllers;
 
 import chatRoom.lib.rooms;
-import chatRoom.lib.userInfo;
+import chatRoom.lib.server;
+import chatRoom.models.loginInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,13 +23,14 @@ public class login implements Initializable {
     @FXML
     private Button connect;
 
+    Thread serverThread[];
+
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
-        userInfo userInfo = new userInfo();
-        userInfo.setUserInfo(username.getText(), getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
+        loginInfo loginInfo = new loginInfo();
+        loginInfo.setUserInfo(username.getText(), getRoomPort(selectedRooms.getSelectionModel().getSelectedIndex()));
         chatPanel chatPanel = new chatPanel();
         chatPanel.openChatPanel(event);
-
     }
 
     /**
@@ -38,18 +40,33 @@ public class login implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<rooms> list = getRooms();
         rooms.setRoomByAvailablePort();
-        populateComboBox();
+        try {
+            __initServers(list);
+        } catch (Exception e) { }
+        populateComboBox(list);
     }
 
+
+    public void __initServers(ArrayList<rooms> list) throws Exception {
+        int listSize = list.size();
+        int index = 0;
+
+        serverThread = new Thread[listSize];
+
+        for (rooms itemPort : list) {
+            serverThread[index++] = new Thread(new server(itemPort.port));
+            serverThread[index].start();
+        }
+
+    }
     /**
      * populates combobox when it called
      */
-    public void populateComboBox(){
-        ArrayList<rooms> list = getRooms();
-        for (rooms item:list) {
+    public void populateComboBox(ArrayList<rooms> list){
+        for (rooms item:list)
             selectedRooms.getItems().add(item.roomName);
-        }
     }
 
     /**

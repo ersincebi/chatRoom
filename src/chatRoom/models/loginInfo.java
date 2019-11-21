@@ -1,6 +1,6 @@
-package chatRoom.lib;
+package chatRoom.models;
 
-public class userInfo {
+public class loginInfo {
     public static String username;
     public static int roomConnected;
 

@@ -3,11 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server$HandleAClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server$HandleAClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/chatPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/chatPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server$HandleAClient.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/userInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/models/login_model.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/lib/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/lib/server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatRoom/lib/userInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/models/loginInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chatRoom/models/login_model.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,6 +101,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="recentsLimit" value="5" />
   </component>
@@ -115,7 +122,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.server">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -162,7 +169,7 @@
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="chatRoom.lib.*" />
+          <option name="PATTERN" value="chatRoom.models.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -225,6 +232,7 @@
       <workItem from="1574158318532" duration="664000" />
       <workItem from="1574173366504" duration="1231000" />
       <workItem from="1574229460827" duration="3311000" />
+      <workItem from="1574362170931" duration="6102000" />
     </task>
     <servers />
   </component>
