@@ -7,7 +7,8 @@ public class rooms {
     public static ArrayList<rooms> roomsList = new ArrayList<rooms>();
     public String roomName;
     public int port;
-    static int roomCount = 5;
+    static int roomCount = 2;
+
     public rooms(String roomName, int port){
         this.roomName = roomName;
         this.port = port;
@@ -33,7 +34,11 @@ public class rooms {
      * inserts the port inside roomList by using addRoom function
      */
     public static void setRoomByAvailablePort() {
-        int port = 9999;
+        addRoom("Room 1",9999);
+        addRoom("Room 2",9998);
+        addRoom("Room 3",9997);
+        addRoom("Room 4",9996);
+        /*int port = 9999;
         int result = port-roomCount;
         int i = 1;
         Socket socket;
@@ -41,10 +46,17 @@ public class rooms {
             try {
                 socket = new Socket("localhost",port);
             }catch (Exception e){
-                addRoom("Room " + i,port);
-                i++;
+                addRoom("Room " + i++,port);
             }
             port--;
-        }
+        }*/
+    }
+
+    /**
+     * returns the room list from populated rooms class
+     * @return
+     */
+    public static ArrayList<rooms> getRooms(){
+        return rooms.roomsList;
     }
 }

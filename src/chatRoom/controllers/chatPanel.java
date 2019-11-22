@@ -14,8 +14,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+import java.io.*;
 import java.net.*;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 
@@ -27,22 +27,25 @@ public class chatPanel implements Initializable {
     @FXML
     private Button send;
 
-    byte[] sendData = new byte[1024];
-    byte[] receiveData = new byte[1024];
-    DatagramSocket clientSocket;
-    InetAddress IPAddress;
-    DatagramPacket sendPacket;
-    DatagramPacket receivePacket;
+    String sendData = "";
+    String receiveData ="";
+
+    Socket socket;
+    DataInputStream dataInputStream;
+    DataOutputStream dataOutputStream;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Thread thread = new Thread(()->{
+            try {
+                socket = new Socket("localhost",loginInfo.roomConnected);
+                dataInputStream = new DataInputStream(socket.getInputStream());
+            } catch (Exception e) { }
             while(true){
                 try {
                     Thread.sleep(500);
-                    receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                    clientSocket.receive(receivePacket);
-                    sendReceive(new String(receivePacket.getData()));
+                    receiveData = dataInputStream.readUTF();
+                    writeReceiveData(receiveData);
                 } catch (Exception e) {}
             }
         });
@@ -60,21 +63,19 @@ public class chatPanel implements Initializable {
     }
 
     @FXML
-    public void sendMessage(ActionEvent event) throws Exception{
-        clientSocket = new DatagramSocket();
-        IPAddress = InetAddress.getByName("localhost");
-        String messageText = loginInfo.username + " > " + sendArea.getText();
-        sendData = messageText.getBytes();
-        sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, loginInfo.roomConnected);
-        clientSocket.send(sendPacket);
+    public void sendMessage(ActionEvent event) throws Exception {
+        socket = new Socket("localhost",loginInfo.roomConnected);
+        sendData = loginInfo.username + " > " + sendArea.getText();
+        System.out.println(sendData + ">" + loginInfo.roomConnected);
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        dataOutputStream.writeUTF(sendData);
+        dataOutputStream.flush();
     }
 
-    private void sendReceive(String messageText) throws Exception {
+    private void writeReceiveData(String messageText) throws Exception {
         messageArea.setText("\n" + messageText);
     }
 
     @FXML
-    public void endSession(){
-        clientSocket.close();
-    }
+    public void endSession() throws Exception { socket.close(); }
 }

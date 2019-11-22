@@ -1,40 +1,68 @@
 package chatRoom.lib;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 public class server implements Runnable{
-    static byte[] receiveData = new byte[1024];
-    static byte[] sendData  = new byte[1024];
-    static DatagramSocket serverSocket;
-    static DatagramPacket receivePacket;
-    static InetAddress IPAddress;
-    static DatagramPacket sendPacket;
+    static ArrayList<rooms> list;
+    String receiveData = "";
+    String sendData = "";
+    ServerSocket serverSocket;
+    Socket socket;
+    DataInputStream dataInputStream;
+    DataOutputStream dataOutputStream;
+    static Thread serverThread[];
     public int port;
 
     public server(int port){
         this.port = port;
     }
 
+    public static void main(String[] args) throws Exception{
+        __initServers(getServerRooms());
+    }
+
+    public static void __initServers(ArrayList<rooms> list) throws Exception {
+        int listSize = list.size();
+        int index = 0;
+
+        serverThread = new Thread[listSize];
+
+        for (rooms itemPort : list) {
+            serverThread[index] = new Thread(new server(itemPort.port));
+            serverThread[index++].start();
+        }
+
+    }
+
     @Override
     public void run() {
         try {
-            serverSocket = new DatagramSocket(port);
+            serverSocket = new ServerSocket(port);
+
+            System.out.println("Server on port " + port + " is online...");
+
+            socket = serverSocket.accept();
+
+            dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
             while(true) {
                 Thread.sleep(500);
-                receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                serverSocket.receive(receivePacket);
-                String sentence = new String(receivePacket.getData());
-                IPAddress = receivePacket.getAddress();
-                sendData = sentence.getBytes();
-                sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
-                serverSocket.send(sendPacket);
+                receiveData = dataInputStream.readUTF();
+                System.out.println(receiveData);
+                dataOutputStream.writeUTF(sendData);
+                dataOutputStream.flush();
             }
-        } catch (IOException | InterruptedException e) { }
+        } catch (Exception e) { }
     }
 
-    public void endSession(){
-        serverSocket.close();
+    public static ArrayList<rooms> getServerRooms(){
+        rooms.setRoomByAvailablePort();
+        return rooms.getRooms();
     }
+
+    public void endSession() throws Exception { socket.close(); }
 
 }

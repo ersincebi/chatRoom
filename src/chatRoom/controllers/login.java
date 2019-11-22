@@ -23,8 +23,6 @@ public class login implements Initializable {
     @FXML
     private Button connect;
 
-    Thread serverThread[];
-
     @FXML
     public void userLogin(ActionEvent event) throws IOException {
         loginInfo loginInfo = new loginInfo();
@@ -40,27 +38,10 @@ public class login implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ArrayList<rooms> list = getRooms();
-        rooms.setRoomByAvailablePort();
-        try {
-            __initServers(list);
-        } catch (Exception e) { }
-        populateComboBox(list);
+        populateComboBox(server.getServerRooms());
     }
 
 
-    public void __initServers(ArrayList<rooms> list) throws Exception {
-        int listSize = list.size();
-        int index = 0;
-
-        serverThread = new Thread[listSize];
-
-        for (rooms itemPort : list) {
-            serverThread[index++] = new Thread(new server(itemPort.port));
-            serverThread[index].start();
-        }
-
-    }
     /**
      * populates combobox when it called
      */
@@ -77,17 +58,8 @@ public class login implements Initializable {
      * @return
      */
     public int getRoomPort(int index){
-        ArrayList<rooms> list = getRooms();
+        ArrayList<rooms> list = rooms.getRooms();
         rooms item = list.get(index);
         return item.port;
     }
-
-    /**
-     * returns the room list from populated rooms class
-     * @return
-     */
-    public ArrayList<rooms> getRooms(){
-        return rooms.roomsList;
-    }
-
 }
