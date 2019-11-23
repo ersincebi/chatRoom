@@ -3,16 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/chatPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/chatPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/controllers/login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/chatRoom/chatRoom/lib/server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$Read.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui$TextListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ClientGui.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ColorInt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/ReceivedMessagesHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/Server$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/chatRoom/UserHandler.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/chatPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/controllers/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatRoom/lib/rooms.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/lib/rooms.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chatRoom/lib/server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/chatRoom/lib/server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java-chat-master/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java-chat-master/ClientGui.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java-chat-master/Server.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,7 +130,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.app">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -140,6 +145,20 @@
     </configuration>
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChatServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controllers.ChatServer" />
+      <module name="chatRoom" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,6 +185,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="app" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app" />
+      <module name="chatRoom" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="javachatApp.client" />
       <module name="chatRoom" />
@@ -187,20 +214,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="chatRoom.lib.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="server (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="javachatApp.server" />
-      <module name="chatRoom" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="javachatApp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -255,10 +268,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.app" />
+        <item itemvalue="Application.ChatServer" />
         <item itemvalue="Application.server" />
         <item itemvalue="Application.rooms" />
         <item itemvalue="Application.client" />
-        <item itemvalue="Application.server (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -282,6 +296,8 @@
       <workItem from="1574229460827" duration="3311000" />
       <workItem from="1574362170931" duration="6102000" />
       <workItem from="1574405322948" duration="11917000" />
+      <workItem from="1574446663380" duration="2204000" />
+      <workItem from="1574450589072" duration="29000" />
     </task>
     <servers />
   </component>
