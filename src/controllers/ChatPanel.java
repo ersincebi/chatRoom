@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class ChatPanel {
     @FXML
-    private TextArea messageArea;
+    private static TextArea messageArea;
     @FXML
     private TextField sendArea;
     @FXML
@@ -37,6 +37,7 @@ public class ChatPanel {
     @FXML
     public void initialize(String username, int port) {
         handleClient = new handleClient(username,"localhost", port);
+        messageArea = new TextArea();
     }
 
     @FXML
@@ -49,7 +50,7 @@ public class ChatPanel {
 
     public static void printToPanel(String message) {
         System.out.println(message);
-        //messageArea.setText(messageArea.getText()+message+"\n");
+        messageArea.setText(messageArea.getText()+message+"\n");
     }
 
 }
