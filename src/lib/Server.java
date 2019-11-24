@@ -7,7 +7,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.ArrayList;
 
-public class Server {
+public class Server implements Runnable {
 
     private static DatagramSocket socket;
 
@@ -16,6 +16,16 @@ public class Server {
 
     private static int ClientID;
     private static ArrayList<ClientInfo> clients = new ArrayList<ClientInfo>();
+    private int port;
+    public Server(int port){
+        this.port = port;
+    }
+
+    @Override
+    public void run() {
+        start(port);
+    }
+
     public static void start(int port) {
         try {
             socket = new DatagramSocket(port);
