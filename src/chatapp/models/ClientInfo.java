@@ -1,4 +1,4 @@
-package models;
+package chatapp.models;
 
 import java.net.InetAddress;
 

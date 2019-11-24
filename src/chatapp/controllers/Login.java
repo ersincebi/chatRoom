@@ -1,4 +1,4 @@
-package controllers;
+package chatapp.controllers;
 
 import lib.rooms;
 

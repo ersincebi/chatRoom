@@ -1,4 +1,4 @@
-package controllers;
+package chatapp.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,8 +36,8 @@ public class ChatPanel {
 
     @FXML
     public void initialize(String username, int port) {
-        handleClient = new handleClient(username,"localhost", port);
         messageArea = new TextArea();
+        handleClient = new handleClient(username,"localhost", port);
     }
 
     @FXML

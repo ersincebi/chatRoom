@@ -1,6 +1,8 @@
 package lib;
 
-import controllers.ChatPanel;
+import chatapp.controllers.ChatPanel;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -66,9 +68,7 @@ public class handleClient {
                         // manage message
                         if(!isCommand(message,packet))
                             ChatPanel.printToPanel(message);
-
                     }
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,6 @@
 package lib;
 
-import models.ClientInfo;
+import chatapp.models.ClientInfo;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
